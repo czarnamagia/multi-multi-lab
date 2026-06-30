@@ -1,0 +1,17 @@
+<!DOCTYPE html><html><head><meta charset='UTF-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Mission Control</title><style>
+:root{--p:#0f172aee;--a:#00e5ff;--t:#ecf3ff}*{box-sizing:border-box}body{margin:0;height:100vh;overflow:hidden;background:radial-gradient(circle at top,#16213e,#050816);color:var(--t);font-family:Arial}
+#splash{position:fixed;inset:0;background:#000;display:flex;flex-direction:column;justify-content:center;align-items:center;z-index:99}#splash h1{font-size:64px}
+#app{display:none;height:100vh;padding:10px}.top{display:flex;gap:10px}.m{width:60px;height:60px;background:var(--p);border-radius:16px;display:flex;justify-content:center;align-items:center}.s{margin-left:auto;background:var(--p);padding:18px;border-radius:16px}
+.layout{display:grid;grid-template-columns:70% 30%;gap:10px;height:calc(100vh - 240px);margin-top:10px}.panel{background:var(--p);border-radius:20px;padding:10px}
+#board{display:grid;grid-template-columns:repeat(10,1fr);gap:8px}.b{background:#1e293b;border-radius:12px;display:flex;justify-content:center;align-items:center;padding:12px}.side{display:grid;grid-template-rows:1fr 1fr 1fr;gap:10px}.bottom{position:fixed;left:10px;right:10px;bottom:10px;height:140px}.drawer{position:fixed;left:-300px;top:0;width:300px;height:100%;background:#08101d;padding:20px;transition:.3s}.drawer.open{left:0}
+</style></head><body>
+<div id='splash'><h1>MULTI MULTI LAB</h1><div>INITIALIZING MISSION CONTROL...</div></div>
+<div id='app'><div class='top'><div class='m' onclick='drawer.classList.toggle("open")'>☰</div><div class='m'>⚙️</div><div class='m'>🧠</div><div class='m'>🎲</div><div class='m'>⚡</div><div class='s'>🤖 AI ONLINE</div></div>
+<div class='layout'><div class='panel'><h2>PLANSZA ANALITYCZNA</h2><div id='board'></div></div><div class='side'><div class='panel'>🏆 Najlepszy kupon</div><div class='panel'>🤖 AI Insights</div><div class='panel'>🔥 Gorące / ❄️ Zimne liczby</div></div></div>
+<div class='panel bottom'><h3>Heatmapa • Trendy • Historia • Symulacje</h3><canvas id='c' width='900' height='80'></canvas></div></div>
+<div id='drawer' class='drawer'><h2>Mission Control</h2><p>⚙️ Konfiguracja</p><p>🧠 Strategie</p><p>🎲 Generowanie</p><p>⚡ Akcje</p></div>
+<script>
+for(let i=1;i<=80;i++){let d=document.createElement('div');d.className='b';d.textContent=String(i).padStart(2,'0');board.appendChild(d)}
+setTimeout(()=>{splash.style.display='none';app.style.display='block'},2500);
+let x=c.getContext('2d');x.strokeStyle='#00e5ff';x.beginPath();for(let i=0;i<20;i++){let xx=i*45,yy=40+Math.sin(i/2)*20;i?x.lineTo(xx,yy):x.moveTo(xx,yy)}x.stroke();
+</script></body></html>
